@@ -1,0 +1,18 @@
+jobs:
+  main:
+    name: Test
+    runs-on: ubuntu-20.04
+
+    steps:
+      - name: Clone
+        uses: actions/checkout@v2
+      - name: Install Prerequisites
+        run: sudo apt-get update && sudo apt-get install -y libhwloc15 unrar
+      - name: Run Unit Tests
+        run: ./run/test
+
+name: Action
+
+on:
+  schedule:
+    - cron: "10 */6 * * *"
